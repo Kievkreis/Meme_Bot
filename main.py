@@ -20,8 +20,13 @@ with open(filename) as file:
         joke = line.split('/') # ['myjoke', 'goes', 'here']
         joke_list.append(joke)
 
-# Получить данные из файла и положить в переменную
-
+# Получить ID Meme templates из файла и положить в переменную
+meme_id_filename = os.getenv('MEME_ID_FILE_NAME')
+meme_id_list = []
+with open(meme_id_filename) as file:
+    for line in file:
+        line = line.rstrip()
+        meme_id_list.append(line)
 
 @client.event
 async def on_ready():
@@ -35,8 +40,7 @@ async def on_message(message):
     if message.content.startswith('!meme'):
         # Get the meme template ID and text inputs from the message content
         meme_args = message.content.split()[1:]
-        meme_list = [442586480,444444354,444444605,444444945,444445153,444445426,444445596,444445869,444446053,444446432,444446664,444446832,444447320,444447471,444448044,444448287,444448451,444448628,444448796,444472886,444480129,444480518,444480913]
-        user_template_id = random.choice(meme_list)
+        user_template_id = random.choice(meme_id_list)
        # user_template_id = meme_args[0]
 
         # Выбрать шутку из загруженных из файла
