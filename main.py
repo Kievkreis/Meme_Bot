@@ -20,6 +20,8 @@ with open(filename) as file:
         joke = line.split('/') # ['myjoke', 'goes', 'here']
         joke_list.append(joke)
 
+# Получить данные из файла и положить в переменную
+
 
 @client.event
 async def on_ready():
